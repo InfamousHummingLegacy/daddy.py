@@ -170,9 +170,11 @@ async def on_raw_reaction_add(payload):
 
     print(f"✅ {member.display_name} has been verified!")
 
-# Securely get token from environment variable or directly
-TOKEN = os.environ.get('TOKEN')
+# Securely get token from environment variable
+TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
+
 if not TOKEN:
-    TOKEN = 'MTM0ODA5ODIyMDk3NDQxMTgxNw.G-89Tr.VHR-hfFiILhwH34NzxWmnUkpe-mi8PtpynJ4Fc'  # Fallback, but not recommended!
+    print("❌ ERROR: No bot token found! Set 'DISCORD_BOT_TOKEN' in environment variables.")
+    exit(1)
 
 bot.run(TOKEN)
